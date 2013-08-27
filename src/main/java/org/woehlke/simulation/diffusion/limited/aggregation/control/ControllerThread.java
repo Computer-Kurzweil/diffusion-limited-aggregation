@@ -16,7 +16,7 @@ public class ControllerThread extends Thread
     private Particles particles;
     private WorldCanvas canvas;
 
-    private int THREAD_SLEEP_TIME = 75;
+    private int THREAD_SLEEP_TIME = 50;
     private Boolean goOn;
 
     public ControllerThread(WorldCanvas canvas, Particles particles) {

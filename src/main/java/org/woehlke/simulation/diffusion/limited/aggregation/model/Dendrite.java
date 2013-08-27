@@ -38,16 +38,6 @@ public class Dendrite {
         }
     }
 
-    public boolean isOutside(Point particle) {
-        Point[] neighbours=particle.getNeighbourhood(dimensions);
-        for(Point neighbour:neighbours){
-            if(worldMap[neighbour.getX()][neighbour.getY()]>0){
-              return false;
-            }
-        }
-        return true;
-    }
-
     public int getAgeForPixel(int x,int y){
         return worldMap[x][y];
     }

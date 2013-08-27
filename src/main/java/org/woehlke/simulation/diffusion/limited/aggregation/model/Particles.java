@@ -14,7 +14,7 @@ import java.util.Random;
  */
 public class Particles {
 
-    private final static int NUMBER_OF_PARTICLES = 50000;
+    private final static int NUMBER_OF_PARTICLES = 30000;
 
     private Point worldDimensions;
 
