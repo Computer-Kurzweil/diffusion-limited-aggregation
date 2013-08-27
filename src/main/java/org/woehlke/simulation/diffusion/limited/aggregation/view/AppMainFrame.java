@@ -9,8 +9,8 @@ import java.awt.image.ImageObserver;
 import java.io.Serializable;
 
 /**
- * (C) 2006 - 2008 Thomas Woehlke.
- * http://thomas-woehlke.de/p/simulated-evolution/
+ * (C) 2006 - 2013 Thomas Woehlke.
+ * http://thomas-woehlke.de/p/diffusion-limited-aggregation/
  * @author Thomas Woehlke
  * Date: 04.02.2006
  * Time: 18:47:46
@@ -21,11 +21,11 @@ public class AppMainFrame extends JFrame implements ImageObserver,
         Accessible,
         WindowListener {
 
-    private SimulatedEvolutionApplet exe;
+    private DlaApplet exe;
 
     public AppMainFrame() {
         super("diffusion limited aggregation (DLA)");
-        exe = new SimulatedEvolutionApplet();
+        exe = new DlaApplet();
         exe.init();
         add("Center", exe);
         setBounds(100, 100, exe.getCanvasDimensions().getX(), exe.getCanvasDimensions().getY() + 30);

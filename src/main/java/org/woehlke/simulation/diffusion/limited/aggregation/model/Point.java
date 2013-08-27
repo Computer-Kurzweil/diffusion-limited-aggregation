@@ -3,8 +3,8 @@ package org.woehlke.simulation.diffusion.limited.aggregation.model;
 import java.io.Serializable;
 
 /**
- * (C) 2006 - 2008 Thomas Woehlke.
- * http://thomas-woehlke.de/p/simulated-evolution/
+ * (C) 2006 - 2013 Thomas Woehlke.
+ * http://thomas-woehlke.de/p/diffusion-limited-aggregation/
  * @author Thomas Woehlke
  * Date: 04.02.2006
  * Time: 23:47:05

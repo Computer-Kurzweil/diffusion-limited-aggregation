@@ -9,49 +9,52 @@ import java.util.List;
 
 
 /**
- * (C) 2006 - 2008 Thomas Woehlke.
- * http://thomas-woehlke.de/p/simulated-evolution/
+ * (C) 2006 - 2013 Thomas Woehlke.
+ * http://thomas-woehlke.de/p/diffusion-limited-aggregation/
  * @author Thomas Woehlke
  * Date: 05.02.2006
  * Time: 00:51:51
  */
 public class WorldCanvas extends JComponent {
 
-    private World world;
+
+    private Particles particles;
     private Point worldDimensions;
 
-    private final Color WATER = Color.BLACK;
-    private final Color FOOD = Color.GREEN;
+    private final Color MEDIUM = Color.BLACK;
+    private final Color PARTICLES = Color.BLUE;
 
-    public WorldCanvas(Point worldDimensions) {
+    public WorldCanvas(Point worldDimensions, Particles particles) {
         this.worldDimensions = worldDimensions;
-        this.setBackground(WATER);
+        this.setBackground(MEDIUM);
         this.setSize(this.worldDimensions.getX(), this.worldDimensions.getY());
+        this.particles=particles;
     }
 
     public void paint(Graphics g) {
         super.paintComponent(g);
         int width = worldDimensions.getX();
         int height = worldDimensions.getY();
-        g.setColor(WATER);
+        g.setColor(MEDIUM);
         g.fillRect(0,0,width,height);
-        g.setColor(FOOD);
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                if (world.hasFood(x, y)) {
+        g.setColor(PARTICLES);
+        for(Point pixel:particles.getParticles()){
+            g.drawLine(pixel.getX(),pixel.getY(),pixel.getX(),pixel.getY());
+        }
+        for(int y=0;y<worldDimensions.getY();y++){
+            for(int x=0;x<worldDimensions.getX();x++){
+                int age = particles.getDendriteColor(x,y);
+                if(age>0){
+                    age /= 25;
+                    int blue = (age / 256) % (256*256);
+                    int green = (age % 256);
+                    int red = 255;
+                    Color ageColor = new Color(red,green,blue);
+                    g.setColor(ageColor);
                     g.drawLine(x,y,x,y);
                 }
             }
         }
-        List<Cell> population = world.getAllCells();
-        for (Cell p:population) {
-            Point[] square = p.getPosition().getNeighbourhood(worldDimensions);
-            g.setColor(p.getLifeCycleStatus().getColor());
-            for(Point pixel:square){
-                g.drawLine(pixel.getX(),pixel.getY(),pixel.getX(),pixel.getY());
-            }
-        }
-        //System.out.print(".");
     }
 
     public void update(Graphics g) {
@@ -60,9 +63,5 @@ public class WorldCanvas extends JComponent {
 
     public Point getWorldDimensions() {
         return worldDimensions;
-    }
-
-    public void setWorld(World world) {
-        this.world = world;
     }
 }

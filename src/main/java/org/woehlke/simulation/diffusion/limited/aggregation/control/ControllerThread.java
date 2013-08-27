@@ -1,25 +1,28 @@
 package org.woehlke.simulation.diffusion.limited.aggregation.control;
 
-import org.woehlke.simulation.diffusion.limited.aggregation.model.World;
+import org.woehlke.simulation.diffusion.limited.aggregation.model.Particles;
 import org.woehlke.simulation.diffusion.limited.aggregation.view.WorldCanvas;
 
 /**
  * (C) 2006 - 2013 Thomas Woehlke.
- * http://thomas-woehlke.de/p/simulated-evolution/
+ * http://thomas-woehlke.de/p/diffusion-limited-aggregation/
  * @author Thomas Woehlke
  * Date: 05.02.2006
  * Time: 00:36:20
  */
 public class ControllerThread extends Thread
         implements Runnable {
-    private World world;
+
+    private Particles particles;
     private WorldCanvas canvas;
 
-    private int THREAD_SLEEP_TIME = 100;
+    private int THREAD_SLEEP_TIME = 75;
     private Boolean goOn;
 
-    public ControllerThread() {
+    public ControllerThread(WorldCanvas canvas, Particles particles) {
         goOn = Boolean.TRUE;
+        this.canvas=canvas;
+        this.particles=particles;
     }
 
     public void run() {
@@ -28,7 +31,7 @@ public class ControllerThread extends Thread
             synchronized (goOn) {
                 doIt = goOn.booleanValue();
             }
-            world.letLivePopulation();
+            particles.move();
             canvas.repaint();
             try { sleep(THREAD_SLEEP_TIME); }
             catch (InterruptedException e) { e.printStackTrace(); }
@@ -42,11 +45,5 @@ public class ControllerThread extends Thread
         }
     }
 
-    public void setCanvas(WorldCanvas canvas) {
-        this.canvas = canvas;
-    }
 
-    public void setWorld(World world) {
-        this.world = world;
-    }
 }

@@ -3,8 +3,8 @@ package org.woehlke.simulation.diffusion.limited.aggregation.desktop;
 import org.woehlke.simulation.diffusion.limited.aggregation.view.AppMainFrame;
 
 /**
- * (C) 2006 - 2008 Thomas Woehlke.
- * http://thomas-woehlke.de/p/simulated-evolution/
+ * (C) 2006 - 2013 Thomas Woehlke.
+ * http://thomas-woehlke.de/p/diffusion-limited-aggregation/
  * @author Thomas Woehlke
  */
 public class AppMainDesktop {
