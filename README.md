@@ -10,8 +10,8 @@ Hele-Shaw flow, mineral deposits, and dielectric breakdown.
 Ref: http://en.wikipedia.org/wiki/Diffusion-limited_aggregation
 
 
-Run the Desktop Application
----------------------------
+Run the Application
+-------------------
 
 git clone https://github.com/phasenraum2010/diffusion-limited-aggregation.git
 
@@ -19,14 +19,13 @@ cd diffusion-limited-aggregation
 
 mvn clean install exec:java
 
-Run the Java Applet
--------------------
-
-go to: http://www.thomas-woehlke.de/a/diffusion-limited-aggregation
-
 Project Documentation
 ---------------------
 
 go to: http://www.thomas-woehlke.de/p/diffusion-limited-aggregation
+
+Blog and Download
+-----------------
+go to: http://thomas-woehlke.blogspot.de/2016/01/diffusion-limited-aggregation.html
 
 
