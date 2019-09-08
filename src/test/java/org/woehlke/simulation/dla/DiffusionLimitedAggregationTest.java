@@ -1,12 +1,12 @@
-package org.woehlke.simulation.diffusion.limited.aggregation;
+package org.woehlke.simulation.dla;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * Unit test for simple AppMainDesktop.
+ * Unit test for simple DiffusionLimitedAggregationDesktop.
  */
-public class AppTest {
+public class DiffusionLimitedAggregationTest {
 
     /**
      * Rigourous Test :-)

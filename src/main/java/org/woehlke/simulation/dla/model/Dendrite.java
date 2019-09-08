@@ -1,13 +1,21 @@
-package org.woehlke.simulation.diffusion.limited.aggregation.model;
+package org.woehlke.simulation.dla.model;
+
+import org.woehlke.simulation.dla.DiffusionLimitedAggregation;
 
 /**
+ * Diffusion Limited Aggregation.
+ *
  * (C) 2006 - 2013 Thomas Woehlke.
- * http://thomas-woehlke.de/p/diffusion-limited-aggregation/
+ * https://thomas-woehlke.blogspot.com/2016/01/diffusion-limited-aggregation.html
  * @author Thomas Woehlke
+ *
  * Date: 27.08.13
  * Time: 16:56
  */
-public class Dendrite {
+public class Dendrite implements DiffusionLimitedAggregation {
+
+    static final long serialVersionUID = mySerialVersionUID;
+
 
     private int worldMap[][];
     private Point dimensions;

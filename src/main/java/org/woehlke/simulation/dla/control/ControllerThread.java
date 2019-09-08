@@ -1,22 +1,28 @@
-package org.woehlke.simulation.diffusion.limited.aggregation.control;
+package org.woehlke.simulation.dla.control;
 
-import org.woehlke.simulation.diffusion.limited.aggregation.model.Particles;
-import org.woehlke.simulation.diffusion.limited.aggregation.view.WorldCanvas;
+import org.woehlke.simulation.dla.DiffusionLimitedAggregation;
+import org.woehlke.simulation.dla.model.Particles;
+import org.woehlke.simulation.dla.view.WorldCanvas;
 
 /**
+ * Diffusion Limited Aggregation.
+ *
  * (C) 2006 - 2013 Thomas Woehlke.
- * http://thomas-woehlke.de/p/diffusion-limited-aggregation/
+ * https://thomas-woehlke.blogspot.com/2016/01/diffusion-limited-aggregation.html
  * @author Thomas Woehlke
+ *
  * Date: 05.02.2006
  * Time: 00:36:20
  */
 public class ControllerThread extends Thread
-        implements Runnable {
+        implements Runnable, DiffusionLimitedAggregation {
+
+    static final long serialVersionUID = mySerialVersionUID;
+
 
     private Particles particles;
     private WorldCanvas canvas;
 
-    private int THREAD_SLEEP_TIME = 50;
     private Boolean goOn;
 
     public ControllerThread(WorldCanvas canvas, Particles particles) {

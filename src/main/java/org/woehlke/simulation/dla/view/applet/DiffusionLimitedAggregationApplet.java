@@ -1,8 +1,10 @@
-package org.woehlke.simulation.diffusion.limited.aggregation.view;
+package org.woehlke.simulation.dla.view.applet;
 
-import org.woehlke.simulation.diffusion.limited.aggregation.control.ControllerThread;
-import org.woehlke.simulation.diffusion.limited.aggregation.model.Particles;
-import org.woehlke.simulation.diffusion.limited.aggregation.model.Point;
+import org.woehlke.simulation.dla.DiffusionLimitedAggregation;
+import org.woehlke.simulation.dla.control.ControllerThread;
+import org.woehlke.simulation.dla.model.Particles;
+import org.woehlke.simulation.dla.model.Point;
+import org.woehlke.simulation.dla.view.WorldCanvas;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;
@@ -11,15 +13,22 @@ import java.awt.image.ImageObserver;
 import java.io.Serializable;
 
 /**
+ * Diffusion Limited Aggregation.
+ *
  * (C) 2006 - 2013 Thomas Woehlke.
- * http://thomas-woehlke.de/p/diffusion-limited-aggregation/
+ * https://thomas-woehlke.blogspot.com/2016/01/diffusion-limited-aggregation.html
  * @author Thomas Woehlke
+ *
  * Date: 04.02.2006
  * Time: 18:33:14
  */
-public class DlaApplet extends JApplet implements ImageObserver, MenuContainer, Serializable, Accessible {
+public class DiffusionLimitedAggregationApplet extends JApplet implements
+    ImageObserver, MenuContainer, Serializable, Accessible, DiffusionLimitedAggregation {
 
-    private Label title = new Label("diffusion limited aggregation (DLA)");
+    static final long serialVersionUID = mySerialVersionUID;
+
+
+    private Label title = new Label(TITLE);
     private ControllerThread controllerThread;
     private WorldCanvas canvas;
     private Particles particles;

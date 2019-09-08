@@ -1,15 +1,21 @@
-package org.woehlke.simulation.diffusion.limited.aggregation.model;
+package org.woehlke.simulation.dla.model;
 
-import java.io.Serializable;
+import org.woehlke.simulation.dla.DiffusionLimitedAggregation;
 
 /**
+ * Diffusion Limited Aggregation.
+ *
  * (C) 2006 - 2013 Thomas Woehlke.
- * http://thomas-woehlke.de/p/diffusion-limited-aggregation/
+ * https://thomas-woehlke.blogspot.com/2016/01/diffusion-limited-aggregation.html
  * @author Thomas Woehlke
+ *
  * Date: 04.02.2006
  * Time: 23:47:05
  */
-public class Point implements Serializable {
+public class Point implements DiffusionLimitedAggregation {
+
+    static final long serialVersionUID = mySerialVersionUID;
+
 
     private int x = 0;
     private int y = 0;

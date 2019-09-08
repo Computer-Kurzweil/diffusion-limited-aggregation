@@ -1,4 +1,6 @@
-package org.woehlke.simulation.diffusion.limited.aggregation.model;
+package org.woehlke.simulation.dla.model;
+
+import org.woehlke.simulation.dla.DiffusionLimitedAggregation;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -6,15 +8,19 @@ import java.util.List;
 import java.util.Random;
 
 /**
+ * Diffusion Limited Aggregation.
+ *
  * (C) 2006 - 2013 Thomas Woehlke.
- * http://thomas-woehlke.de/p/diffusion-limited-aggregation/
+ * https://thomas-woehlke.blogspot.com/2016/01/diffusion-limited-aggregation.html
  * @author Thomas Woehlke
+ *
  * Date: 27.08.13
  * Time: 14:57
  */
-public class Particles {
+public class Particles implements DiffusionLimitedAggregation {
 
-    private final static int NUMBER_OF_PARTICLES = 30000;
+    static final long serialVersionUID = mySerialVersionUID;
+
 
     private Point worldDimensions;
 

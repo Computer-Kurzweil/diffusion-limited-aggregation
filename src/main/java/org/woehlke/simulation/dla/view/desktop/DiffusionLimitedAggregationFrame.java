@@ -1,4 +1,7 @@
-package org.woehlke.simulation.diffusion.limited.aggregation.view;
+package org.woehlke.simulation.dla.view.desktop;
+
+import org.woehlke.simulation.dla.DiffusionLimitedAggregation;
+import org.woehlke.simulation.dla.view.applet.DiffusionLimitedAggregationApplet;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;
@@ -9,23 +12,29 @@ import java.awt.image.ImageObserver;
 import java.io.Serializable;
 
 /**
+ * Diffusion Limited Aggregation.
+ *
  * (C) 2006 - 2013 Thomas Woehlke.
- * http://thomas-woehlke.de/p/diffusion-limited-aggregation/
+ * https://thomas-woehlke.blogspot.com/2016/01/diffusion-limited-aggregation.html
  * @author Thomas Woehlke
+ *
  * Date: 04.02.2006
  * Time: 18:47:46
  */
-public class AppMainFrame extends JFrame implements ImageObserver,
+public class DiffusionLimitedAggregationFrame extends JFrame implements ImageObserver,
         MenuContainer,
         Serializable,
         Accessible,
-        WindowListener {
+        WindowListener, DiffusionLimitedAggregation {
 
-    private DlaApplet exe;
+    static final long serialVersionUID = mySerialVersionUID;
 
-    public AppMainFrame() {
-        super("diffusion limited aggregation (DLA)");
-        exe = new DlaApplet();
+
+    private DiffusionLimitedAggregationApplet exe;
+
+    public DiffusionLimitedAggregationFrame() {
+        super(TITLE);
+        exe = new DiffusionLimitedAggregationApplet();
         exe.init();
         add("Center", exe);
         setBounds(100, 100, exe.getCanvasDimensions().getX(), exe.getCanvasDimensions().getY() + 30);
