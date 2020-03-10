@@ -17,20 +17,20 @@ The clusters formed in DLA processes are referred to as Brownian trees. These cl
 
 ## Screenshots
 
-![The Dendrite](etc/img/screen1.png)
+![The Dendrite](src/main/resources/img/screen1.png)
 
-![The Dendrite after a while](etc/img/screen2.png)
+![The Dendrite after a while](src/main/resources/img/screen2.png)
 
 ## Run the Desktop Application
 ```
-git clone https://github.com/phasenraum2010/diffusion-limited-aggregation.git
+git clone https://github.com/Computer-Kurzweil/diffusion-limited-aggregation.git
 cd diffusion-limited-aggregation
-./gradlew run
+./gradlew clean shadowJar runShadow
 ```
 
 ## Run the Applet Test
 ```
-git clone https://github.com/phasenraum2010/diffusion-limited-aggregation.git
+git clone https://github.com/Computer-Kurzweil/diffusion-limited-aggregation.git
 cd diffusion-limited-aggregation
 TODO: xxx
 ```
