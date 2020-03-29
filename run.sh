@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-./gradlew clean shadowJar runShadow
+#./gradlew clean shadowJar runShadow
+mvn
+./mvnw
