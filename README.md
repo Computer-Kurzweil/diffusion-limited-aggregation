@@ -1,5 +1,7 @@
 # diffusion-limited-aggregation
 
+![Java CI with Maven](https://github.com/Computer-Kurzweil/diffusion-limited-aggregation/workflows/Java%20CI%20with%20Maven/badge.svg)
+
 Fractals and random walk due to Brownian motion cluster
 
 ## Abstract
