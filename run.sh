@@ -1,5 +1,17 @@
 #!/usr/bin/env bash
 
-#./gradlew clean shadowJar runShadow
-mvn
-./mvnw
+
+function site() {
+  ./mvnw -e clean install site site:deploy
+}
+
+function run() {
+    ./mvnw
+}
+
+function main() {
+    site
+    run
+}
+
+main
