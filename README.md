@@ -28,12 +28,5 @@ The clusters formed in DLA processes are referred to as Brownian trees. These cl
 ```
 git clone https://github.com/Computer-Kurzweil/diffusion-limited-aggregation.git
 cd diffusion-limited-aggregation
-./gradlew clean shadowJar runShadow
-```
-
-## Run the Applet Test
-```
-git clone https://github.com/Computer-Kurzweil/diffusion-limited-aggregation.git
-cd diffusion-limited-aggregation
-TODO: xxx
+./mvnw
 ```
