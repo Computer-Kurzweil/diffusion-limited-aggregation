@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.woehlke.computer.kurzweil</groupId>
@@ -8,16 +9,19 @@
     <packaging>jar</packaging>
 
     <name>Diffusion Limited Aggregation (DLA)</name>
-    <description>Diffusion-limited aggregation (DLA) is the process whereby particles undergoing a random walk due to Brownian motion cluster together to form aggregates of such particles.</description>
+    <description>Diffusion-limited aggregation (DLA) is the process whereby particles undergoing a random walk due to
+        Brownian motion cluster together to form aggregates of such particles.
+    </description>
     <url>https://github.com/Computer-Kurzweil/diffusion-limited-aggregation</url>
     <inceptionYear>2013</inceptionYear>
 
     <scm>
         <url>https://github.com/Computer-Kurzweil/diffusion-limited-aggregation.git</url>
         <connection>scm:git:git@github.com:Computer-Kurzweil/diffusion-limited-aggregation.git</connection>
-        <developerConnection>scm:git:git@github.com:Computer-Kurzweil/diffusion-limited-aggregation.git</developerConnection>
-      <tag>HEAD</tag>
-  </scm>
+        <developerConnection>scm:git:git@github.com:Computer-Kurzweil/diffusion-limited-aggregation.git
+        </developerConnection>
+        <tag>HEAD</tag>
+    </scm>
 
     <issueManagement>
         <url>https://github.com/Computer-Kurzweil/diffusion-limited-aggregation/issues/</url>
@@ -178,7 +182,7 @@
 
     <properties>
 
-        <java.version>11</java.version>
+        <java.version>17</java.version>
         <version.maven>3.6.3</version.maven>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -947,10 +951,12 @@
                                 <ignoredDependency>org.apache.maven.scm:maven-scm-managers</ignoredDependency>
                             </ignoredDependencies>
                             <ignoredUsedUndeclaredDependencies>
-                                <ignoredUsedUndeclaredDependency>org.apache.maven.plugins:maven-surefire-plugin</ignoredUsedUndeclaredDependency>
+                                <ignoredUsedUndeclaredDependency>org.apache.maven.plugins:maven-surefire-plugin
+                                </ignoredUsedUndeclaredDependency>
                             </ignoredUsedUndeclaredDependencies>
                             <ignoredUnusedDeclaredDependencies>
-                                <ignoredUnusedDeclaredDependency>org.apache.maven.plugins:maven-surefire-plugin</ignoredUnusedDeclaredDependency>
+                                <ignoredUnusedDeclaredDependency>org.apache.maven.plugins:maven-surefire-plugin
+                                </ignoredUnusedDeclaredDependency>
                             </ignoredUnusedDeclaredDependencies>
                         </configuration>
                     </execution>
@@ -984,8 +990,11 @@
                         <id>report</id>
                         <phase>site</phase>
                         <configuration>
-                            <excludeGroupIds>org.webjars,org.jclouds,org.jboss.as,xml-resolver,commons-configuration,org.codehaus.plexus,commons-digester,junit,log4j,io.openliberty.features</excludeGroupIds>
-                            <excludeArtifactIds>weld-probe-core,commons-configuration,jdk.tools,maven-antrun-plugin</excludeArtifactIds>
+                            <excludeGroupIds>
+                                org.webjars,org.jclouds,org.jboss.as,xml-resolver,commons-configuration,org.codehaus.plexus,commons-digester,junit,log4j,io.openliberty.features
+                            </excludeGroupIds>
+                            <excludeArtifactIds>weld-probe-core,commons-configuration,jdk.tools,maven-antrun-plugin
+                            </excludeArtifactIds>
                             <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
                             <failOnWarning>false</failOnWarning>
                             <reportSets>
