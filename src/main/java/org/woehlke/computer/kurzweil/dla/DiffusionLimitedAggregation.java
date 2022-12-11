@@ -6,7 +6,8 @@ import java.io.Serializable;
  * Diffusion Limited Aggregation.
  *
  * (C) 2006 - 2013 Thomas Woehlke.
- * https://thomas-woehlke.blogspot.com/2016/01/diffusion-limited-aggregation.html
+ * @see <a href="https://thomas-woehlke.blogspot.com/2016/01/diffusion-limited-aggregation.html">Blog Arrticle</a>
+ * @see <a href="https://java.woehlke.org/diffusion-limited-aggregation">Maven Project Page</a>
  * @author Thomas Woehlke
  */
 public interface DiffusionLimitedAggregation extends Serializable {
