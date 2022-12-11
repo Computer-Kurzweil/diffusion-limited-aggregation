@@ -1,7 +1,7 @@
-package org.woehlke.simulation.dla.view.desktop;
+package org.woehlke.computer.kurzweil.dla.view.desktop;
 
-import org.woehlke.simulation.dla.DiffusionLimitedAggregation;
-import org.woehlke.simulation.dla.view.applet.DiffusionLimitedAggregationApplet;
+import org.woehlke.computer.kurzweil.dla.DiffusionLimitedAggregation;
+import org.woehlke.computer.kurzweil.dla.view.applet.DiffusionLimitedAggregationApplet;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;

@@ -1,8 +1,8 @@
-package org.woehlke.simulation.dla.control;
+package org.woehlke.computer.kurzweil.dla.control;
 
-import org.woehlke.simulation.dla.DiffusionLimitedAggregation;
-import org.woehlke.simulation.dla.model.Particles;
-import org.woehlke.simulation.dla.view.WorldCanvas;
+import org.woehlke.computer.kurzweil.dla.DiffusionLimitedAggregation;
+import org.woehlke.computer.kurzweil.dla.model.Particles;
+import org.woehlke.computer.kurzweil.dla.view.WorldCanvas;
 
 /**
  * Diffusion Limited Aggregation.

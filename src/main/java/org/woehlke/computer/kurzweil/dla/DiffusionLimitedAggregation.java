@@ -1,4 +1,4 @@
-package org.woehlke.simulation.dla;
+package org.woehlke.computer.kurzweil.dla;
 
 import java.io.Serializable;
 

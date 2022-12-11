@@ -1033,7 +1033,7 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass> org.woehlke.simulation.dla.DiffusionLimitedAggregationDesktop</mainClass>
+                    <mainClass>org.woehlke.computer.kurzweil.dla.DiffusionLimitedAggregationDesktop</mainClass>
                 </configuration>
             </plugin>
             <plugin>

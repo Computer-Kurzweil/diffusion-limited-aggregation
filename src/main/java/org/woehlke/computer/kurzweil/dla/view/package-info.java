@@ -5,6 +5,6 @@
  * https://thomas-woehlke.blogspot.com/2016/01/diffusion-limited-aggregation.html
  * @author Thomas Woehlke
  *
- * Controller.
+ * GUI.
  */
-package org.woehlke.simulation.dla.control;
+package org.woehlke.computer.kurzweil.dla.view;

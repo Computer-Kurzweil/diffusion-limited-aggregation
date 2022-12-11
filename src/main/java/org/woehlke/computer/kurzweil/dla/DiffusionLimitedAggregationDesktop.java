@@ -1,6 +1,6 @@
-package org.woehlke.simulation.dla;
+package org.woehlke.computer.kurzweil.dla;
 
-import org.woehlke.simulation.dla.view.desktop.DiffusionLimitedAggregationFrame;
+import org.woehlke.computer.kurzweil.dla.view.desktop.DiffusionLimitedAggregationFrame;
 
 /**
  * Diffusion Limited Aggregation.

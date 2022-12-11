@@ -7,4 +7,4 @@
  *
  * Starting the Desktop App.
  */
-package org.woehlke.simulation.dla;
+package org.woehlke.computer.kurzweil.dla;

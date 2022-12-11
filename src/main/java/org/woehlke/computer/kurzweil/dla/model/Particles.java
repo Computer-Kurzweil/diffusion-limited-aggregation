@@ -1,6 +1,6 @@
-package org.woehlke.simulation.dla.model;
+package org.woehlke.computer.kurzweil.dla.model;
 
-import org.woehlke.simulation.dla.DiffusionLimitedAggregation;
+import org.woehlke.computer.kurzweil.dla.DiffusionLimitedAggregation;
 
 import java.util.ArrayList;
 import java.util.Date;

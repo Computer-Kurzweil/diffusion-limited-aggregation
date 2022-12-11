@@ -5,6 +5,6 @@
  * https://thomas-woehlke.blogspot.com/2016/01/diffusion-limited-aggregation.html
  * @author Thomas Woehlke
  *
- * GUI.
+ * Model.
  */
-package org.woehlke.simulation.dla.view;
+package org.woehlke.computer.kurzweil.dla.model;
