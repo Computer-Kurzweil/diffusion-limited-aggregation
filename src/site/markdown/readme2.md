@@ -24,6 +24,10 @@ The clusters formed in DLA processes are referred to as Brownian trees. These cl
 
 ![The Dendrite after a while](img/screen2.png)
 
+## Repositories
+* [Github Repository](https://github.com/Computer-Kurzweil/diffusion-limited-aggregation)
+* [Maven Project Reports](https://java.woehlke.org/diffusion-limited-aggregation/readme2.html)
+
 ## Run the Desktop Application
 ```
 git clone https://github.com/Computer-Kurzweil/diffusion-limited-aggregation.git
