@@ -4,7 +4,7 @@
 
     <groupId>org.woehlke.computer.kurzweil</groupId>
     <artifactId>diffusion-limited-aggregation</artifactId>
-    <version>2.1.4</version>
+    <version>2.1.5-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Diffusion Limited Aggregation (DLA)</name>
@@ -19,7 +19,7 @@
         <connection>scm:git:git@github.com:Computer-Kurzweil/diffusion-limited-aggregation.git</connection>
         <developerConnection>scm:git:git@github.com:Computer-Kurzweil/diffusion-limited-aggregation.git
         </developerConnection>
-        <tag>diffusion-limited-aggregation-2.1.4</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <issueManagement>
