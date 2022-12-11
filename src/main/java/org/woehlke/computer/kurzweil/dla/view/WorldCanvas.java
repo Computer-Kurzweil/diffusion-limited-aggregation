@@ -2,7 +2,6 @@ package org.woehlke.computer.kurzweil.dla.view;
 
 import org.woehlke.computer.kurzweil.dla.DiffusionLimitedAggregation;
 import org.woehlke.computer.kurzweil.dla.model.Particles;
-import org.woehlke.simulation.dla.model.*;
 import org.woehlke.computer.kurzweil.dla.model.Point;
 
 import javax.swing.*;
@@ -22,7 +21,6 @@ import java.awt.*;
 public class WorldCanvas extends JComponent implements DiffusionLimitedAggregation {
 
     static final long serialVersionUID = mySerialVersionUID;
-
 
     private Particles particles;
     private Point worldDimensions;
