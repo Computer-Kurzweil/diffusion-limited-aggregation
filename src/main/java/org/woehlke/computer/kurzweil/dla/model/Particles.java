@@ -1,6 +1,6 @@
 package org.woehlke.computer.kurzweil.dla.model;
 
-import org.woehlke.computer.kurzweil.dla.DiffusionLimitedAggregation;
+import org.woehlke.computer.kurzweil.dla.config.DiffusionLimitedAggregation;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,9 +11,11 @@ import java.util.Random;
  * Diffusion Limited Aggregation.
  *
  * (C) 2006 - 2022 Thomas Woehlke.
+ * @author Thomas Woehlke
+ *
  * @see <a href="https://thomas-woehlke.blogspot.com/2016/01/diffusion-limited-aggregation.html">Blog Arrticle</a>
  * @see <a href="https://java.woehlke.org/diffusion-limited-aggregation">Maven Project Page</a>
- * @author Thomas Woehlke
+ * @see <a href="https://github.com/Computer-Kurzweil/diffusion-limited-aggregation">Github</a>
  *
  * Date: 27.08.13
  * Time: 14:57
