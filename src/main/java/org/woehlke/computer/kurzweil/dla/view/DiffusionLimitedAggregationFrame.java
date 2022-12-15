@@ -30,7 +30,8 @@ public class DiffusionLimitedAggregationFrame extends JFrame implements ImageObs
         MenuContainer,
         Serializable,
         Accessible,
-        WindowListener, DiffusionLimitedAggregation {
+        WindowListener,
+        DiffusionLimitedAggregation {
 
     static final long serialVersionUID = mySerialVersionUID;
 
