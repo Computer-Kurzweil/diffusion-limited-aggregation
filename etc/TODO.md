@@ -18,3 +18,4 @@ Fixed #1
 * fixed #10 remove JApplet and integrate SimulatedEvolutionApplet into SimulatedEvolutionTab extends JFrame
 * #11 more UML with plantUML for Documentation
 * #12 add application properties as Java and yml File
+0
