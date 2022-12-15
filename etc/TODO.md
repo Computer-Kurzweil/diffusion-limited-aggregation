@@ -13,3 +13,7 @@ Fixed #1
 - fixed #3 Setup maven Site
 - fixed #2 Setup Github CI
 - fixed #1 Setup Travis CI or Circle CI
+
+## 3.0.x
+* fixed #10 remove JApplet and integrate SimulatedEvolutionApplet into SimulatedEvolutionTab extends JFrame
+* #11 more UML with plantUML for Documentation
