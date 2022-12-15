@@ -356,12 +356,6 @@
                 <scope>test</scope>
             </dependency>
             <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-engine</artifactId>
-                <version>${version.junit5}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
                 <groupId>com.fasterxml.jackson.dataformat</groupId>
                 <artifactId>jackson-dataformat-yaml</artifactId>
                 <version>${version.jackson.databind}</version>
@@ -668,11 +662,6 @@
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
             </exclusions>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -1157,5 +1146,137 @@
             </plugin>
         </plugins>
     </reporting>
+
+    <profiles>
+        <profile>
+            <id>run</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <skipTests>true</skipTests>
+            </properties>
+            <build>
+                <finalName>${project.artifactId}</finalName>
+                <defaultGoal>clean package exec:java</defaultGoal>
+            </build>
+        </profile>
+
+        <profile>
+            <id>build</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <skipTests>false</skipTests>
+            </properties>
+            <build>
+                <finalName>${project.artifactId}</finalName>
+                <defaultGoal>clean dependency:resolve dependency:resolve-plugins dependency:sources install site site:deploy exec:java</defaultGoal>
+            </build>
+        </profile>
+
+        <profile>
+            <id>site</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <skipTests>false</skipTests>
+            </properties>
+            <build>
+                <finalName>${project.artifactId}</finalName>
+                <defaultGoal>clean dependency:resolve dependency:resolve-plugins dependency:sources install site site:deploy</defaultGoal>
+            </build>
+        </profile>
+
+        <profile>
+            <id>release</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <skipTests>false</skipTests>
+                <skipIntegrationTests>false</skipIntegrationTests>
+            </properties>
+            <build>
+                <finalName>${project.artifactId}</finalName>
+                <defaultGoal>release:prepare release:perform</defaultGoal>
+            </build>
+        </profile>
+
+        <profile>
+            <id>uml</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <skipTests>true</skipTests>
+            </properties>
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.github.funthomas424242</groupId>
+                        <artifactId>plantuml-maven-plugin</artifactId>
+                        <version>${version.plantuml-maven-plugin}</version>
+                        <type>maven-plugin</type>
+                        <exclusions>
+                            <exclusion>
+                                <groupId>javax.enterprise</groupId>
+                                <artifactId>cdi-api</artifactId>
+                            </exclusion>
+                        </exclusions>
+                    </dependency>
+                    <dependency>
+                        <groupId>net.sourceforge.plantuml</groupId>
+                        <artifactId>plantuml</artifactId>
+                        <version>${version.plantuml-maven-plugin.plantuml}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
+            <dependencies>
+                <dependency>
+                    <groupId>com.github.funthomas424242</groupId>
+                    <artifactId>plantuml-maven-plugin</artifactId>
+                    <type>maven-plugin</type>
+                </dependency>
+                <dependency>
+                    <groupId>net.sourceforge.plantuml</groupId>
+                    <artifactId>plantuml</artifactId>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
+            <build>
+                <finalName>${project.artifactId}</finalName>
+                <defaultGoal>clean com.github.funthomas424242:plantuml-maven-plugin:generate</defaultGoal>
+                <plugins>
+                    <plugin>
+                        <groupId>com.github.funthomas424242</groupId>
+                        <artifactId>plantuml-maven-plugin</artifactId>
+                        <version>${version.plantuml-maven-plugin}</version>
+                        <configuration>
+                            <truncatePattern>src/main/*</truncatePattern>
+                            <sourceFiles>
+                                <directory>${basedir}</directory>
+                                <includes>
+                                    <include>src/plantuml/**/*.puml</include>
+                                </includes>
+                            </sourceFiles>
+                        </configuration>
+                        <dependencies>
+                            <dependency>
+                                <groupId>net.sourceforge.plantuml</groupId>
+                                <artifactId>plantuml</artifactId>
+                                <version>${version.plantuml-maven-plugin.plantuml}</version>
+                                <scope>runtime</scope>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+    </profiles>
 
 </project>
