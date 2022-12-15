@@ -2,8 +2,9 @@ package org.woehlke.computer.kurzweil.dla.view;
 
 import org.woehlke.computer.kurzweil.dla.config.DiffusionLimitedAggregation;
 import org.woehlke.computer.kurzweil.dla.control.ControllerThread;
-import org.woehlke.computer.kurzweil.dla.model.Particles;
-import org.woehlke.computer.kurzweil.dla.model.Point;
+import org.woehlke.computer.kurzweil.dla.model.DiffusionLimitedAggregationModel;
+import org.woehlke.computer.kurzweil.dla.model.dendrite.Point;
+import org.woehlke.computer.kurzweil.dla.view.canvas.WorldCanvas;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;
@@ -38,7 +39,7 @@ public class DiffusionLimitedAggregationFrame extends JFrame implements ImageObs
     private Label title = new Label(TITLE);
     private ControllerThread controllerThread;
     private WorldCanvas canvas;
-    private Particles particles;
+    private DiffusionLimitedAggregationModel diffusionLimitedAggregationModel;
 
     public DiffusionLimitedAggregationFrame() {
         super(TITLE);
@@ -47,24 +48,29 @@ public class DiffusionLimitedAggregationFrame extends JFrame implements ImageObs
         int height = 234 * scale;
         this.setLayout(new BorderLayout());
         this.add(title, BorderLayout.NORTH);
-        org.woehlke.computer.kurzweil.dla.model.Point worldDimensions = new Point(width,height);
-        particles = new Particles(worldDimensions);
-        canvas = new WorldCanvas(worldDimensions,particles);
+        Point worldDimensions = new Point(width,height);
+        diffusionLimitedAggregationModel = new DiffusionLimitedAggregationModel(worldDimensions);
+        canvas = new WorldCanvas(worldDimensions, diffusionLimitedAggregationModel);
         this.add(canvas, BorderLayout.CENTER);
-        controllerThread = new ControllerThread(canvas,particles);
-        controllerThread.start();
+        controllerThread = new ControllerThread(canvas, diffusionLimitedAggregationModel);
         add("Center", canvas);
-        setBounds(100, 100, this.getCanvasDimensions().getX(), this.getCanvasDimensions().getY() + 30);
         pack();
-        setVisible(true);
-        toFront();
+        showMe();
         addWindowListener(this);
     }
 
-    public void windowOpened(WindowEvent e) {
+    public void start() {
+        controllerThread.start();
+    }
+
+    public void showMe(){
         setBounds(100, 100, this.getCanvasDimensions().getX(), this.getCanvasDimensions().getY() + 30);
         setVisible(true);
         toFront();
+    }
+
+    public void windowOpened(WindowEvent e) {
+        showMe();
     }
 
     public void windowClosing(WindowEvent e) {
@@ -80,9 +86,7 @@ public class DiffusionLimitedAggregationFrame extends JFrame implements ImageObs
     }
 
     public void windowDeiconified(WindowEvent e) {
-        setBounds(100, 100, this.getCanvasDimensions().getX(), this.getCanvasDimensions().getY() + 30);
-        setVisible(true);
-        toFront();
+        showMe();
     }
 
     public void windowActivated(WindowEvent e) {

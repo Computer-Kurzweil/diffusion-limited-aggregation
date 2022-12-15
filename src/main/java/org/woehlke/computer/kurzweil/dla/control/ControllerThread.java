@@ -1,8 +1,8 @@
 package org.woehlke.computer.kurzweil.dla.control;
 
 import org.woehlke.computer.kurzweil.dla.config.DiffusionLimitedAggregation;
-import org.woehlke.computer.kurzweil.dla.model.Particles;
-import org.woehlke.computer.kurzweil.dla.view.WorldCanvas;
+import org.woehlke.computer.kurzweil.dla.model.DiffusionLimitedAggregationModel;
+import org.woehlke.computer.kurzweil.dla.view.canvas.WorldCanvas;
 
 /**
  * Diffusion Limited Aggregation.
@@ -23,15 +23,15 @@ public class ControllerThread extends Thread
     static final long serialVersionUID = mySerialVersionUID;
 
 
-    private Particles particles;
-    private WorldCanvas canvas;
+    private volatile DiffusionLimitedAggregationModel diffusionLimitedAggregationModel;
+    private volatile WorldCanvas canvas;
 
     private Boolean goOn;
 
-    public ControllerThread(WorldCanvas canvas, Particles particles) {
+    public ControllerThread(WorldCanvas canvas, DiffusionLimitedAggregationModel diffusionLimitedAggregationModel) {
         goOn = Boolean.TRUE;
         this.canvas=canvas;
-        this.particles=particles;
+        this.diffusionLimitedAggregationModel = diffusionLimitedAggregationModel;
     }
 
     public void run() {
@@ -40,7 +40,7 @@ public class ControllerThread extends Thread
             synchronized (goOn) {
                 doIt = goOn.booleanValue();
             }
-            particles.move();
+            diffusionLimitedAggregationModel.move();
             canvas.repaint();
             try { sleep(THREAD_SLEEP_TIME); }
             catch (InterruptedException e) { e.printStackTrace(); }

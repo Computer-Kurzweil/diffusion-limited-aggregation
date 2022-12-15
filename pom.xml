@@ -1021,7 +1021,7 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>org.woehlke.computer.kurzweil.dla.DiffusionLimitedAggregationDesktop</mainClass>
+                    <mainClass>org.woehlke.computer.kurzweil.dla.DiffusionLimitedAggregationApplication</mainClass>
                 </configuration>
             </plugin>
             <plugin>

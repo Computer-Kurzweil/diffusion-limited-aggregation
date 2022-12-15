@@ -1,8 +1,8 @@
-package org.woehlke.computer.kurzweil.dla.view;
+package org.woehlke.computer.kurzweil.dla.view.canvas;
 
 import org.woehlke.computer.kurzweil.dla.config.DiffusionLimitedAggregation;
-import org.woehlke.computer.kurzweil.dla.model.Particles;
-import org.woehlke.computer.kurzweil.dla.model.Point;
+import org.woehlke.computer.kurzweil.dla.model.DiffusionLimitedAggregationModel;
+import org.woehlke.computer.kurzweil.dla.model.dendrite.Point;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,17 +25,17 @@ public class WorldCanvas extends JComponent implements DiffusionLimitedAggregati
 
     static final long serialVersionUID = mySerialVersionUID;
 
-    private Particles particles;
+    private DiffusionLimitedAggregationModel diffusionLimitedAggregationModel;
     private Point worldDimensions;
 
     private final Color MEDIUM = Color.BLACK;
     private final Color PARTICLES = Color.BLUE;
 
-    public WorldCanvas(Point worldDimensions, Particles particles) {
+    public WorldCanvas(Point worldDimensions, DiffusionLimitedAggregationModel diffusionLimitedAggregationModel) {
         this.worldDimensions = worldDimensions;
         this.setBackground(MEDIUM);
         this.setSize(this.worldDimensions.getX(), this.worldDimensions.getY());
-        this.particles=particles;
+        this.diffusionLimitedAggregationModel = diffusionLimitedAggregationModel;
     }
 
     public void paint(Graphics g) {
@@ -45,12 +45,12 @@ public class WorldCanvas extends JComponent implements DiffusionLimitedAggregati
         g.setColor(MEDIUM);
         g.fillRect(0,0,width,height);
         g.setColor(PARTICLES);
-        for(Point pixel:particles.getParticles()){
+        for(Point pixel: diffusionLimitedAggregationModel.getParticles()){
             g.drawLine(pixel.getX(),pixel.getY(),pixel.getX(),pixel.getY());
         }
         for(int y=0;y<worldDimensions.getY();y++){
             for(int x=0;x<worldDimensions.getX();x++){
-                int age = particles.getDendriteColor(x,y);
+                int age = diffusionLimitedAggregationModel.getDendriteColor(x,y);
                 if(age>0){
                     age /= 25;
                     int blue = (age / 256) % (256*256);

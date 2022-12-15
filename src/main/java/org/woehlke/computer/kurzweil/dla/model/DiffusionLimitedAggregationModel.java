@@ -1,6 +1,8 @@
 package org.woehlke.computer.kurzweil.dla.model;
 
 import org.woehlke.computer.kurzweil.dla.config.DiffusionLimitedAggregation;
+import org.woehlke.computer.kurzweil.dla.model.dendrite.Dendrite;
+import org.woehlke.computer.kurzweil.dla.model.dendrite.Point;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,10 +22,9 @@ import java.util.Random;
  * Date: 27.08.13
  * Time: 14:57
  */
-public class Particles implements DiffusionLimitedAggregation {
+public class DiffusionLimitedAggregationModel implements DiffusionLimitedAggregation {
 
     static final long serialVersionUID = mySerialVersionUID;
-
 
     private Point worldDimensions;
 
@@ -33,7 +34,7 @@ public class Particles implements DiffusionLimitedAggregation {
 
     private Dendrite dendrite;
 
-    public Particles(Point worldDimensions) {
+    public DiffusionLimitedAggregationModel(Point worldDimensions) {
         this.worldDimensions=worldDimensions;
         random = new Random(new Date().getTime());
         for(int i=0; i<NUMBER_OF_PARTICLES;i++){

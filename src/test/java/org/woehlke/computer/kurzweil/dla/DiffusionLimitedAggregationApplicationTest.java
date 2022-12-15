@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @see <a href="https://java.woehlke.org/diffusion-limited-aggregation">Maven Project Page</a>
  * @see <a href="https://github.com/Computer-Kurzweil/diffusion-limited-aggregation">Github</a>
  */
-public class DiffusionLimitedAggregationTest {
+public class DiffusionLimitedAggregationApplicationTest {
 
     /**
      * Rigourous Test :-)
