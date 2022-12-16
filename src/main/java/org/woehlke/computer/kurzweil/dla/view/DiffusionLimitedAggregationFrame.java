@@ -39,12 +39,14 @@ public class DiffusionLimitedAggregationFrame extends JFrame implements ImageObs
 
     static final long serialVersionUID = 242L;
 
-    private JLabel subtitle;
-    private JLabel copyright;
-    private ControllerThread controller;
-    private WorldCanvas canvas;
-    private DiffusionLimitedAggregationModel model;
-    private ComputerKurzweilProperties config;
+    private final JLabel subtitle;
+    private final JLabel copyright;
+    private volatile ControllerThread controller;
+    private volatile WorldCanvas canvas;
+    private volatile DiffusionLimitedAggregationModel model;
+    private volatile ComputerKurzweilProperties config;
+    private volatile Rectangle rectangleBounds;
+    private volatile Dimension dimensionSize;
 
     public DiffusionLimitedAggregationFrame(ComputerKurzweilProperties config) {
         super(config.getDla().getView().getTitle());
@@ -58,7 +60,7 @@ public class DiffusionLimitedAggregationFrame extends JFrame implements ImageObs
         this.add(subtitle, BorderLayout.NORTH);
         this.add(canvas, BorderLayout.CENTER);
         this.add(copyright, BorderLayout.SOUTH);
-        showMe();
+        showMeInit();
         addWindowListener(this);
     }
 
@@ -66,11 +68,37 @@ public class DiffusionLimitedAggregationFrame extends JFrame implements ImageObs
         controller.start();
     }
 
-    public void showMe(){
-        setBounds(getFrameBounds());
+    public void showMeInit() {
         pack();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        double width =  this.model.getWorldDimensions().getX();
+        double height = this.model.getWorldDimensions().getY() + 60;
+        double startX = (screenSize.getWidth() - width) / 2d;
+        double startY = (screenSize.getHeight() - height) / 2d;
+        int myheight = Double.valueOf(height).intValue();
+        int mywidth = Double.valueOf(width).intValue();
+        int mystartX = Double.valueOf(startX).intValue();
+        int mystartY = Double.valueOf(startY).intValue();
+        this.rectangleBounds = new Rectangle(mystartX, mystartY, mywidth, myheight);
+        this.dimensionSize = new Dimension(mywidth, myheight);
+        this.setBounds(this.rectangleBounds);
+        this.setSize(this.dimensionSize);
+        this.setPreferredSize(this.dimensionSize);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
         toFront();
+    }
+
+    /**
+     * Things to do, to show the Application Window again.
+     */
+    public void showMe() {
+        this.pack();
+        this.setBounds(this.rectangleBounds);
+        this.setSize(this.dimensionSize);
+        this.setPreferredSize(this.dimensionSize);
+        this.setVisible(true);
+        this.toFront();
     }
 
     public Rectangle getFrameBounds() {
