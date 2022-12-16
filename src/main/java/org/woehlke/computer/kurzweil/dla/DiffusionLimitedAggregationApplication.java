@@ -34,5 +34,6 @@ public class DiffusionLimitedAggregationApplication {
      */
     public static void main(String[] args) {
         DiffusionLimitedAggregationApplication app = new DiffusionLimitedAggregationApplication();
+        app.start();
     }
 }
