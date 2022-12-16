@@ -43,9 +43,9 @@ public class DiffusionLimitedAggregationModel implements Serializable {
 
     public DiffusionLimitedAggregationModel(ComputerKurzweilProperties config) {
         this.config = config;
-        int scale = 2;
-        int width = 320 * scale;
-        int height = 234 * scale;
+        int scale = this.config.getDla().getView().getScale();
+        int width = scale * this.config.getDla().getView().getWidth() ;
+        int height = scale * this.config.getDla().getView().getHeight();
         this.worldDimensions = new Point(width,height);
         random = new Random(new Date().getTime());
         for(int i=0; i<config.getDla().getControl().getNumberOfParticles();i++){

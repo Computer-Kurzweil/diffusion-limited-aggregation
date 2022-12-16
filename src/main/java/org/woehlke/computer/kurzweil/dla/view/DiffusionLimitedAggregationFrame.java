@@ -14,6 +14,8 @@ import java.awt.event.WindowListener;
 import java.awt.image.ImageObserver;
 import java.io.Serializable;
 
+import static javax.swing.SwingConstants.CENTER;
+
 /**
  * Diffusion Limited Aggregation.
  *
@@ -35,7 +37,8 @@ public class DiffusionLimitedAggregationFrame extends JFrame implements ImageObs
 
     static final long serialVersionUID = 242L;
 
-    private Label title;
+    private JLabel subtitle;
+    private JLabel copyright;
     private ControllerThread controller;
     private WorldCanvas canvas;
     private DiffusionLimitedAggregationModel model;
@@ -43,16 +46,16 @@ public class DiffusionLimitedAggregationFrame extends JFrame implements ImageObs
 
     public DiffusionLimitedAggregationFrame(ComputerKurzweilProperties config) {
         super(config.getDla().getView().getTitle());
-        title = new Label(config.getDla().getView().getTitle());
         this.config = config;
+        this.subtitle = new JLabel(config.getDla().getView().getSubtitle(),CENTER);
+        this.copyright = new JLabel(config.getDla().getView().getCopyright(),CENTER);
         this.model = new DiffusionLimitedAggregationModel(config);
         this.canvas = new WorldCanvas(model);
         this.controller = new ControllerThread(canvas, model);
         this.setLayout(new BorderLayout());
-        this.add(title, BorderLayout.NORTH);
+        this.add(subtitle, BorderLayout.NORTH);
         this.add(canvas, BorderLayout.CENTER);
-        //this.add("Center", canvas);
-        pack();
+        this.add(copyright, BorderLayout.SOUTH);
         showMe();
         addWindowListener(this);
     }
@@ -62,9 +65,24 @@ public class DiffusionLimitedAggregationFrame extends JFrame implements ImageObs
     }
 
     public void showMe(){
-        setBounds(100, 100, this.getCanvasDimensions().getX(), this.getCanvasDimensions().getY() + 30);
+        setBounds(getFrameBounds());
+        pack();
         setVisible(true);
         toFront();
+    }
+
+    public Rectangle getFrameBounds() {
+        int height = this.model.getWorldDimensions().getY();
+        int width = this.model.getWorldDimensions().getX();
+        int TITLE_HEIGHT = 60;
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        double startX = (screenSize.getWidth() - height) / 2d;
+        double startY = (screenSize.getHeight() - width) / 2d;
+        int myheight = Double.valueOf(height).intValue() + TITLE_HEIGHT;
+        int mywidth = Double.valueOf(width).intValue();
+        int mystartX = Double.valueOf(startX).intValue();
+        int mystartY = Double.valueOf(startY).intValue();
+        return new Rectangle(mystartX, mystartY, mywidth, myheight);
     }
 
     public void windowOpened(WindowEvent e) {
