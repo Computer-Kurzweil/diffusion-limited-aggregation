@@ -1,6 +1,7 @@
 package org.woehlke.computer.kurzweil.dla.control;
 
 import org.woehlke.computer.kurzweil.dla.model.DiffusionLimitedAggregationModel;
+import org.woehlke.computer.kurzweil.dla.view.DiffusionLimitedAggregationFrame;
 import org.woehlke.computer.kurzweil.dla.view.canvas.WorldCanvas;
 
 import java.io.Serializable;
@@ -23,15 +24,21 @@ public class ControllerThread extends Thread
 
     static final long serialVersionUID = 242L;
 
+    private final DiffusionLimitedAggregationFrame tab;
+
     private volatile DiffusionLimitedAggregationModel model;
     private volatile WorldCanvas canvas;
 
+    private final int threadSleepTime;
+
     private Boolean goOn;
 
-    public ControllerThread(WorldCanvas canvas, DiffusionLimitedAggregationModel model) {
+    public ControllerThread(DiffusionLimitedAggregationFrame tab) {
+        this.tab = tab;
         this.goOn = Boolean.TRUE;
-        this.canvas = canvas;
-        this.model = model;
+        this.canvas = this.tab.getCanvas();
+        this.model = this.tab.getModel();
+        this.threadSleepTime = model.getConfig().getDla().getControl().getThreadSleepTime();
     }
 
     public void run() {
@@ -40,9 +47,10 @@ public class ControllerThread extends Thread
             synchronized (goOn) {
                 doIt = goOn.booleanValue();
             }
-            model.move();
-            canvas.repaint();
-            try { sleep(model.getConfig().getDla().getControl().getThreadSleepTime()); }
+            this.model.move();
+            this.canvas.repaint();
+            this.tab.repaint();
+            try { sleep(this.threadSleepTime); }
             catch (InterruptedException e) { e.printStackTrace(); }
         }
         while (doIt);

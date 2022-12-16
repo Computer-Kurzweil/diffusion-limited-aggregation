@@ -1,5 +1,6 @@
 package org.woehlke.computer.kurzweil.dla.view;
 
+import lombok.Getter;
 import org.woehlke.computer.kurzweil.dla.config.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.dla.control.ControllerThread;
 import org.woehlke.computer.kurzweil.dla.model.DiffusionLimitedAggregationModel;
@@ -29,6 +30,7 @@ import static javax.swing.SwingConstants.CENTER;
  * Date: 04.02.2006
  * Time: 18:47:46
  */
+@Getter
 public class DiffusionLimitedAggregationFrame extends JFrame implements ImageObserver,
         MenuContainer,
         Serializable,
@@ -51,7 +53,7 @@ public class DiffusionLimitedAggregationFrame extends JFrame implements ImageObs
         this.copyright = new JLabel(config.getDla().getView().getCopyright(),CENTER);
         this.model = new DiffusionLimitedAggregationModel(config);
         this.canvas = new WorldCanvas(model);
-        this.controller = new ControllerThread(canvas, model);
+        this.controller = new ControllerThread(this);
         this.setLayout(new BorderLayout());
         this.add(subtitle, BorderLayout.NORTH);
         this.add(canvas, BorderLayout.CENTER);

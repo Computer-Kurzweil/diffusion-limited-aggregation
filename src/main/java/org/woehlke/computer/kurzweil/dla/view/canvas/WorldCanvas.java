@@ -40,6 +40,7 @@ public class WorldCanvas extends JComponent implements Serializable {
         this.worldDimensions = model.getWorldDimensions();
         this.setBackground(MEDIUM);
         this.setSize(this.worldDimensions.getX(), this.worldDimensions.getY());
+        this.setVisible(true);
     }
 
     public void paint(Graphics g) {

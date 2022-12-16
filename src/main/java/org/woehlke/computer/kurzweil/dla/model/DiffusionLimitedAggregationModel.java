@@ -29,17 +29,17 @@ public class DiffusionLimitedAggregationModel implements Serializable {
     static final long serialVersionUID = 242L;
 
     @Getter
-    private ComputerKurzweilProperties config;
+    private final ComputerKurzweilProperties config;
 
     @Getter
-    private Point worldDimensions;
+    private final Point worldDimensions;
 
     @Getter
-    private List<Point> particles = new ArrayList<Point>();
+    private volatile List<Point> particles = new ArrayList<Point>();
 
-    private Random random;
+    private volatile Random random;
 
-    private Dendrite dendrite;
+    private volatile Dendrite dendrite;
 
     public DiffusionLimitedAggregationModel(ComputerKurzweilProperties config) {
         this.config = config;
