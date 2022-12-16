@@ -11,7 +11,7 @@
     <description>Diffusion-limited aggregation (DLA) is the process whereby particles undergoing a random walk due to
         Brownian motion cluster together to form aggregates of such particles.
     </description>
-    <url>https://github.com/Computer-Kurzweil/diffusion-limited-aggregation</url>
+    <url>https://java.woehlke.org/diffusion-limited-aggregation</url>
     <inceptionYear>2013</inceptionYear>
 
     <scm>
