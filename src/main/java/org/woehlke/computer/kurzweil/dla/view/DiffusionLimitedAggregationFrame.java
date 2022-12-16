@@ -1,5 +1,6 @@
 package org.woehlke.computer.kurzweil.dla.view;
 
+import org.woehlke.computer.kurzweil.dla.config.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.dla.config.DiffusionLimitedAggregation;
 import org.woehlke.computer.kurzweil.dla.control.ControllerThread;
 import org.woehlke.computer.kurzweil.dla.model.DiffusionLimitedAggregationModel;
@@ -37,30 +38,28 @@ public class DiffusionLimitedAggregationFrame extends JFrame implements ImageObs
     static final long serialVersionUID = mySerialVersionUID;
 
     private Label title = new Label(TITLE);
-    private ControllerThread controllerThread;
+    private ControllerThread controller;
     private WorldCanvas canvas;
-    private DiffusionLimitedAggregationModel diffusionLimitedAggregationModel;
+    private DiffusionLimitedAggregationModel model;
+    private ComputerKurzweilProperties config;
 
-    public DiffusionLimitedAggregationFrame() {
+    public DiffusionLimitedAggregationFrame(ComputerKurzweilProperties config) {
         super(TITLE);
-        int scale = 2;
-        int width = 320 * scale;
-        int height = 234 * scale;
+        this.config = config;
+        this.model = new DiffusionLimitedAggregationModel(config);
+        this.canvas = new WorldCanvas(model);
+        this.controller = new ControllerThread(canvas, model);
         this.setLayout(new BorderLayout());
         this.add(title, BorderLayout.NORTH);
-        Point worldDimensions = new Point(width,height);
-        diffusionLimitedAggregationModel = new DiffusionLimitedAggregationModel(worldDimensions);
-        canvas = new WorldCanvas(worldDimensions, diffusionLimitedAggregationModel);
         this.add(canvas, BorderLayout.CENTER);
-        controllerThread = new ControllerThread(canvas, diffusionLimitedAggregationModel);
-        add("Center", canvas);
+        //this.add("Center", canvas);
         pack();
         showMe();
         addWindowListener(this);
     }
 
     public void start() {
-        controllerThread.start();
+        controller.start();
     }
 
     public void showMe(){

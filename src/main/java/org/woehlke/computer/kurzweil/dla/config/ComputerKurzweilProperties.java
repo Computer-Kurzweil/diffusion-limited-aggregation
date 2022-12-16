@@ -32,6 +32,8 @@ import java.util.jar.JarFile;
 ////@Validated
 public class ComputerKurzweilProperties implements Serializable {
 
+    final static long serialVersionUID = 242L;
+
     @Valid
     public Allinone allinone = new Allinone();
 

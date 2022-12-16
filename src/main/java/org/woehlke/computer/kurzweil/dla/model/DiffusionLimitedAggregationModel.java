@@ -1,5 +1,7 @@
 package org.woehlke.computer.kurzweil.dla.model;
 
+import lombok.Getter;
+import org.woehlke.computer.kurzweil.dla.config.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.dla.config.DiffusionLimitedAggregation;
 import org.woehlke.computer.kurzweil.dla.model.dendrite.Dendrite;
 import org.woehlke.computer.kurzweil.dla.model.dendrite.Point;
@@ -26,16 +28,25 @@ public class DiffusionLimitedAggregationModel implements DiffusionLimitedAggrega
 
     static final long serialVersionUID = mySerialVersionUID;
 
+    @Getter
+    private ComputerKurzweilProperties config;
+
+    @Getter
     private Point worldDimensions;
 
+    @Getter
     private List<Point> particles = new ArrayList<Point>();
 
     private Random random;
 
     private Dendrite dendrite;
 
-    public DiffusionLimitedAggregationModel(Point worldDimensions) {
-        this.worldDimensions=worldDimensions;
+    public DiffusionLimitedAggregationModel(ComputerKurzweilProperties config) {
+        this.config = config;
+        int scale = 2;
+        int width = 320 * scale;
+        int height = 234 * scale;
+        this.worldDimensions = new Point(width,height);
         random = new Random(new Date().getTime());
         for(int i=0; i<NUMBER_OF_PARTICLES;i++){
             int x = random.nextInt(worldDimensions.getX());
@@ -43,10 +54,6 @@ public class DiffusionLimitedAggregationModel implements DiffusionLimitedAggrega
             particles.add(new Point(x>=0?x:-x,y>=0?y:-y));
         }
         this.dendrite = new Dendrite(worldDimensions);
-    }
-
-    public List<Point> getParticles() {
-        return particles;
     }
 
     public void move() {

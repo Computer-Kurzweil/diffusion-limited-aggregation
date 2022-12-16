@@ -21,7 +21,7 @@ public class DiffusionLimitedAggregationApplication {
         String conf = "application.yml";
         String jarPath = "target/diffusion-limited-aggregation.jar";
         ComputerKurzweilProperties config = ComputerKurzweilProperties.propertiesFactory(conf, jarPath);
-        this.frame = new DiffusionLimitedAggregationFrame();
+        this.frame = new DiffusionLimitedAggregationFrame(config);
     }
 
     public void start(){

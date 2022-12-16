@@ -1,5 +1,6 @@
 package org.woehlke.computer.kurzweil.dla.view.canvas;
 
+import lombok.Getter;
 import org.woehlke.computer.kurzweil.dla.config.DiffusionLimitedAggregation;
 import org.woehlke.computer.kurzweil.dla.model.DiffusionLimitedAggregationModel;
 import org.woehlke.computer.kurzweil.dla.model.dendrite.Point;
@@ -25,17 +26,20 @@ public class WorldCanvas extends JComponent implements DiffusionLimitedAggregati
 
     static final long serialVersionUID = mySerialVersionUID;
 
-    private DiffusionLimitedAggregationModel diffusionLimitedAggregationModel;
-    private Point worldDimensions;
+    @Getter
+    private volatile DiffusionLimitedAggregationModel model;
+
+    @Getter
+    private final Point worldDimensions;
 
     private final Color MEDIUM = Color.BLACK;
     private final Color PARTICLES = Color.BLUE;
 
-    public WorldCanvas(Point worldDimensions, DiffusionLimitedAggregationModel diffusionLimitedAggregationModel) {
-        this.worldDimensions = worldDimensions;
+    public WorldCanvas( DiffusionLimitedAggregationModel model) {
+        this.model = model;
+        this.worldDimensions = model.getWorldDimensions();
         this.setBackground(MEDIUM);
         this.setSize(this.worldDimensions.getX(), this.worldDimensions.getY());
-        this.diffusionLimitedAggregationModel = diffusionLimitedAggregationModel;
     }
 
     public void paint(Graphics g) {
@@ -45,12 +49,12 @@ public class WorldCanvas extends JComponent implements DiffusionLimitedAggregati
         g.setColor(MEDIUM);
         g.fillRect(0,0,width,height);
         g.setColor(PARTICLES);
-        for(Point pixel: diffusionLimitedAggregationModel.getParticles()){
+        for(Point pixel: model.getParticles()){
             g.drawLine(pixel.getX(),pixel.getY(),pixel.getX(),pixel.getY());
         }
         for(int y=0;y<worldDimensions.getY();y++){
             for(int x=0;x<worldDimensions.getX();x++){
-                int age = diffusionLimitedAggregationModel.getDendriteColor(x,y);
+                int age = model.getDendriteColor(x,y);
                 if(age>0){
                     age /= 25;
                     int blue = (age / 256) % (256*256);
@@ -66,9 +70,5 @@ public class WorldCanvas extends JComponent implements DiffusionLimitedAggregati
 
     public void update(Graphics g) {
         paint(g);
-    }
-
-    public Point getWorldDimensions() {
-        return worldDimensions;
     }
 }
