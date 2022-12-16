@@ -2,10 +2,10 @@ package org.woehlke.computer.kurzweil.dla.model;
 
 import lombok.Getter;
 import org.woehlke.computer.kurzweil.dla.config.ComputerKurzweilProperties;
-import org.woehlke.computer.kurzweil.dla.config.DiffusionLimitedAggregation;
 import org.woehlke.computer.kurzweil.dla.model.dendrite.Dendrite;
 import org.woehlke.computer.kurzweil.dla.model.dendrite.Point;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,9 +24,9 @@ import java.util.Random;
  * Date: 27.08.13
  * Time: 14:57
  */
-public class DiffusionLimitedAggregationModel implements DiffusionLimitedAggregation {
+public class DiffusionLimitedAggregationModel implements Serializable {
 
-    static final long serialVersionUID = mySerialVersionUID;
+    static final long serialVersionUID = 242L;
 
     @Getter
     private ComputerKurzweilProperties config;
@@ -48,7 +48,7 @@ public class DiffusionLimitedAggregationModel implements DiffusionLimitedAggrega
         int height = 234 * scale;
         this.worldDimensions = new Point(width,height);
         random = new Random(new Date().getTime());
-        for(int i=0; i<NUMBER_OF_PARTICLES;i++){
+        for(int i=0; i<config.getDla().getControl().getNumberOfParticles();i++){
             int x = random.nextInt(worldDimensions.getX());
             int y = random.nextInt(worldDimensions.getY());
             particles.add(new Point(x>=0?x:-x,y>=0?y:-y));

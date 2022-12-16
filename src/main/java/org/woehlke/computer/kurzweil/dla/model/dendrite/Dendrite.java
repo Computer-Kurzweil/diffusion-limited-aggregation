@@ -1,6 +1,7 @@
 package org.woehlke.computer.kurzweil.dla.model.dendrite;
 
-import org.woehlke.computer.kurzweil.dla.config.DiffusionLimitedAggregation;
+
+import java.io.Serializable;
 
 /**
  * Diffusion Limited Aggregation.
@@ -15,9 +16,9 @@ import org.woehlke.computer.kurzweil.dla.config.DiffusionLimitedAggregation;
  * Date: 27.08.13
  * Time: 16:56
  */
-public class Dendrite implements DiffusionLimitedAggregation {
+public class Dendrite implements Serializable {
 
-    static final long serialVersionUID = mySerialVersionUID;
+    static final long serialVersionUID = 242L;
 
     private int worldMap[][];
     private Point dimensions;

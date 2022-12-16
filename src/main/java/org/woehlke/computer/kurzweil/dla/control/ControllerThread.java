@@ -1,8 +1,9 @@
 package org.woehlke.computer.kurzweil.dla.control;
 
-import org.woehlke.computer.kurzweil.dla.config.DiffusionLimitedAggregation;
 import org.woehlke.computer.kurzweil.dla.model.DiffusionLimitedAggregationModel;
 import org.woehlke.computer.kurzweil.dla.view.canvas.WorldCanvas;
+
+import java.io.Serializable;
 
 /**
  * Diffusion Limited Aggregation.
@@ -18,20 +19,19 @@ import org.woehlke.computer.kurzweil.dla.view.canvas.WorldCanvas;
  * Time: 00:36:20
  */
 public class ControllerThread extends Thread
-        implements Runnable, DiffusionLimitedAggregation {
+        implements Runnable, Serializable {
 
-    static final long serialVersionUID = mySerialVersionUID;
+    static final long serialVersionUID = 242L;
 
-
-    private volatile DiffusionLimitedAggregationModel diffusionLimitedAggregationModel;
+    private volatile DiffusionLimitedAggregationModel model;
     private volatile WorldCanvas canvas;
 
     private Boolean goOn;
 
-    public ControllerThread(WorldCanvas canvas, DiffusionLimitedAggregationModel diffusionLimitedAggregationModel) {
-        goOn = Boolean.TRUE;
-        this.canvas=canvas;
-        this.diffusionLimitedAggregationModel = diffusionLimitedAggregationModel;
+    public ControllerThread(WorldCanvas canvas, DiffusionLimitedAggregationModel model) {
+        this.goOn = Boolean.TRUE;
+        this.canvas = canvas;
+        this.model = model;
     }
 
     public void run() {
@@ -40,9 +40,9 @@ public class ControllerThread extends Thread
             synchronized (goOn) {
                 doIt = goOn.booleanValue();
             }
-            diffusionLimitedAggregationModel.move();
+            model.move();
             canvas.repaint();
-            try { sleep(THREAD_SLEEP_TIME); }
+            try { sleep(model.getConfig().getDla().getControl().getThreadSleepTime()); }
             catch (InterruptedException e) { e.printStackTrace(); }
         }
         while (doIt);
@@ -53,6 +53,4 @@ public class ControllerThread extends Thread
             goOn = Boolean.FALSE;
         }
     }
-
-
 }
