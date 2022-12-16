@@ -1,12 +1,12 @@
 package org.woehlke.computer.kurzweil.dla.view.canvas;
 
 import lombok.Getter;
-import org.woehlke.computer.kurzweil.dla.config.DiffusionLimitedAggregation;
 import org.woehlke.computer.kurzweil.dla.model.DiffusionLimitedAggregationModel;
 import org.woehlke.computer.kurzweil.dla.model.dendrite.Point;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.Serializable;
 
 
 /**
@@ -22,9 +22,9 @@ import java.awt.*;
  * Date: 05.02.2006
  * Time: 00:51:51
  */
-public class WorldCanvas extends JComponent implements DiffusionLimitedAggregation {
+public class WorldCanvas extends JComponent implements Serializable {
 
-    static final long serialVersionUID = mySerialVersionUID;
+    static final long serialVersionUID = 242L;
 
     @Getter
     private volatile DiffusionLimitedAggregationModel model;

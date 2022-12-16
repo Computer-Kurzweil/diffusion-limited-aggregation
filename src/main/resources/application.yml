@@ -106,7 +106,7 @@ randomwalk:
     threadSleepTime: 100
 dla:
   view:
-    title: 'Diffusion Limited Aggregation'
+    title: 'diffusion limited aggregation (DLA)'
     subtitle: 'Fractal Random Walk due to Brownian Motion Cluster'
   control:
     threadSleepTime: 50

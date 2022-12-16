@@ -1,7 +1,6 @@
 package org.woehlke.computer.kurzweil.dla.view;
 
 import org.woehlke.computer.kurzweil.dla.config.ComputerKurzweilProperties;
-import org.woehlke.computer.kurzweil.dla.config.DiffusionLimitedAggregation;
 import org.woehlke.computer.kurzweil.dla.control.ControllerThread;
 import org.woehlke.computer.kurzweil.dla.model.DiffusionLimitedAggregationModel;
 import org.woehlke.computer.kurzweil.dla.model.dendrite.Point;
@@ -32,19 +31,19 @@ public class DiffusionLimitedAggregationFrame extends JFrame implements ImageObs
         MenuContainer,
         Serializable,
         Accessible,
-        WindowListener,
-        DiffusionLimitedAggregation {
+        WindowListener{
 
-    static final long serialVersionUID = mySerialVersionUID;
+    static final long serialVersionUID = 242L;
 
-    private Label title = new Label(TITLE);
+    private Label title;
     private ControllerThread controller;
     private WorldCanvas canvas;
     private DiffusionLimitedAggregationModel model;
     private ComputerKurzweilProperties config;
 
     public DiffusionLimitedAggregationFrame(ComputerKurzweilProperties config) {
-        super(TITLE);
+        super(config.getDla().getView().getTitle());
+        title = new Label(config.getDla().getView().getTitle());
         this.config = config;
         this.model = new DiffusionLimitedAggregationModel(config);
         this.canvas = new WorldCanvas(model);
