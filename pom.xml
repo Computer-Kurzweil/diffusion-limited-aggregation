@@ -60,4 +60,48 @@
         </license>
     </licenses>
 
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>org.woehlke.computer.kurzweil.dla.DiffusionLimitedAggregationApplication</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>run</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <skipTests>false</skipTests>
+            </properties>
+            <build>
+                <finalName>${project.artifactId}</finalName>
+                <defaultGoal>clean install exec:java</defaultGoal>
+            </build>
+        </profile>
+        <profile>
+            <id>build</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <skipTests>false</skipTests>
+            </properties>
+            <build>
+                <finalName>${project.artifactId}</finalName>
+                <defaultGoal>
+                    clean dependency:resolve dependency:resolve-plugins dependency:sources install site site:deploy exec:java
+                </defaultGoal>
+            </build>
+        </profile>
+    </profiles>
+
 </project>
