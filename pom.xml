@@ -15,10 +15,9 @@
     <inceptionYear>2013</inceptionYear>
 
     <scm>
-        <url>https://github.com/Computer-Kurzweil/diffusion-limited-aggregation.git</url>
         <connection>scm:git:git@github.com:Computer-Kurzweil/diffusion-limited-aggregation.git</connection>
-        <developerConnection>scm:git:git@github.com:Computer-Kurzweil/diffusion-limited-aggregation.git
-        </developerConnection>
+        <developerConnection>scm:git:git@github.com:Computer-Kurzweil/diffusion-limited-aggregation.git</developerConnection>
+        <url>https://github.com/Computer-Kurzweil/diffusion-limited-aggregation/tree/${project.scm.tag}</url>
         <tag>HEAD</tag>
     </scm>
 
