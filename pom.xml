@@ -9,7 +9,7 @@
     </parent>
 
     <artifactId>diffusion-limited-aggregation</artifactId>
-    <version>3.0.5</version>
+    <version>3.0.6-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Diffusion Limited Aggregation (DLA)</name>
@@ -23,7 +23,7 @@
         <connection>scm:git:git@github.com:Computer-Kurzweil/diffusion-limited-aggregation.git</connection>
         <developerConnection>scm:git:git@github.com:Computer-Kurzweil/diffusion-limited-aggregation.git</developerConnection>
         <url>https://github.com/Computer-Kurzweil/diffusion-limited-aggregation/tree/${project.scm.tag}</url>
-        <tag>diffusion-limited-aggregation-3.0.5</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <issueManagement>
