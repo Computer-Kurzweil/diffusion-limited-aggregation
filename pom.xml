@@ -9,7 +9,7 @@
     </parent>
 
     <artifactId>diffusion-limited-aggregation</artifactId>
-    <version>3.0.4-SNAPSHOT</version>
+    <version>3.0.4</version>
     <packaging>jar</packaging>
 
     <name>Diffusion Limited Aggregation (DLA)</name>
@@ -23,7 +23,7 @@
         <connection>scm:git:git@github.com:Computer-Kurzweil/diffusion-limited-aggregation.git</connection>
         <developerConnection>scm:git:git@github.com:Computer-Kurzweil/diffusion-limited-aggregation.git</developerConnection>
         <url>https://github.com/Computer-Kurzweil/diffusion-limited-aggregation/tree/${project.scm.tag}</url>
-        <tag>HEAD</tag>
+        <tag>diffusion-limited-aggregation-3.0.4</tag>
     </scm>
 
     <issueManagement>
@@ -65,20 +65,20 @@
             <id>Central</id>
             <name>Central Repository</name>
             <url>https://repo1.maven.org/maven2/</url>
-            <releases></releases>
-            <snapshots></snapshots>
+            <releases />
+            <snapshots />
         </repository>
         <repository>
             <id>repository.woehlke.org-releases</id>
             <name>woehlke.org Releases Repository</name>
             <url>https://repository.woehlke.org/releases/</url>
-            <releases></releases>
+            <releases />
         </repository>
         <repository>
             <id>repository.woehlke.org-snapshots</id>
             <name>woehlke.org Snapshots Repository</name>
             <url>https://repository.woehlke.org/snapshots/</url>
-            <snapshots></snapshots>
+            <snapshots />
         </repository>
     </repositories>
 
